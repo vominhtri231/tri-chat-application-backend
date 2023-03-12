@@ -1,12 +1,13 @@
-var users = []
+import UserModel from '../../models/UserModel.js'
 
-export default function createUser(req, res) {
-  const user = { ...req.body }
-  users.push(user.username)
+export default async (req, res) => {
+  const user = new UserModel({
+    username: req.body.username
+  })
 
-  console.log(users)
+  const savedUser = await user.save()
 
   res.json({
-    success: true, data: user
+    success: true, data: savedUser
   })
 }
