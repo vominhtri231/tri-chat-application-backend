@@ -1,6 +1,6 @@
 var users = []
 
-exports.createUser = (req, res) => {
+export default function createUser(req, res) {
   const user = { ...req.body }
   users.push(user.username)
 

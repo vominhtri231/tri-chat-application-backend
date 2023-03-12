@@ -1,8 +1,8 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const cors = require('cors')
-const config = require('./config')
-const routes = require('./routes')
+import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
+import { port } from './config/index.js';
+import routes from './routes/index.js';
 
 const app = express();
 
@@ -10,8 +10,8 @@ app.use(bodyParser.json())
 app.use(cors())
 app.use('/api', routes)
 
-app.listen(config.port, () => {
-  console.log(`app is running on PORT ${config.port}`)
+app.listen(port, () => {
+  console.log(`app is running on PORT ${port}`)
 })
 
-module.exports = app
+export default app
